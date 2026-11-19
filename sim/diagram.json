@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "author": "Gogolev",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": 213.8,
+      "left": -29.4,
+      "attrs": { "temperature": "25" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 230.2,
+      "left": 261.3,
+      "rotate": 90,
+      "attrs": { "value": "512" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "us1",
+      "top": 342.5,
+      "left": -36.5,
+      "rotate": 270,
+      "attrs": { "distance": "60" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 336.2, "left": 240, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -61.2,
+      "left": 32.6,
+      "attrs": { "color": "white" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -24.55,
+      "left": 75.4,
+      "rotate": 180,
+      "attrs": { "value": "120" }
+    }
+  ],
+  "connections": [
+    [ "uno:5V", "ntc1:VCC", "red", [ "v10.1", "h-35.2", "v48" ] ],
+    [ "uno:GND.1", "ntc1:GND", "black", [] ],
+    [ "ntc1:OUT", "uno:A0", "orange", [] ],
+    [ "uno:5V", "pot1:VCC", "red", [ "h99.2", "v87.7" ] ],
+    [ "uno:GND.1", "pot1:GND", "black", [ "h134.1", "v250.2" ] ],
+    [ "pot1:SIG", "uno:A1", "orange", [] ],
+    [ "uno:5V", "us1:VCC", "red", [ "v19.7", "h-25.6", "v192" ] ],
+    [ "uno:GND.2", "us1:GND", "black", [] ],
+    [ "uno:7", "us1:TRIG", "blue", [ "h-73.8", "v384.2" ] ],
+    [ "us1:ECHO", "uno:8", "cyan", [] ],
+    [ "uno:5V", "relay1:VCC", "red", [] ],
+    [ "uno:GND.2", "relay1:GND", "black", [ "h60.9", "v173.7" ] ],
+    [ "uno:2", "relay1:IN", "purple", [ "h-15.7", "v365.6" ] ],
+    [ "uno:12", "r1:1", "yellow", [] ],
+    [ "r1:2", "led1:A", "yellow", [] ],
+    [ "led1:C", "uno:GND.1", "black", [ "h0.4", "v9.6", "h67.5" ] ],
+    [ "uno:5V", "relay1:COM", "red", [ "v-9.1", "h194" ] ]
+  ],
+  "dependencies": {}
+}
